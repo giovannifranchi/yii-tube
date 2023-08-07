@@ -14,12 +14,12 @@ $this->beginContent('@backend/views/layouts/base.php')
 
 
 
-<main class="d-flex">
+
     <?php echo $this->render('_aside')?>
-    <div class="flex-grow-1">
+    <main class="flex-grow-1">
         <?= $content ?>
-    </div>
-</main>
+    </main>
+
 
 
 <?php $this->endContent()?>

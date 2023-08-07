@@ -26,7 +26,7 @@ AppAsset::register($this);
 
 <?php echo $this->render('_navbar') ?>
 
-<main class="flex-grow-1 d-flex">
+<main class="flex-grow-1 d-flex w-100">
     <?php echo $content ?>
 </main>
 
