@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 
+
 /**
  * This is the model class for table "{{%video}}".
  *
@@ -23,6 +24,13 @@ use Yii;
  */
 class Video extends \yii\db\ActiveRecord
 {
+
+    /**
+     * @var \yii\web\UploadedFile
+     */
+    public $video;
+
+
     /**
      * {@inheritdoc}
      */
@@ -84,5 +92,23 @@ class Video extends \yii\db\ActiveRecord
     public static function find()
     {
         return new \common\models\query\VideoQuery(get_called_class());
+    }
+
+    public function save($runValidation = true, $attributeNames = null)
+    {
+        $isInsert = $this->isNewRecord;
+
+        if ($isInsert) {
+            $this->video_id = Yii::$app->security->generateRandomString(8);
+            $this->title = $this->video->name;
+            $this->video_name = $this->video->name;
+        }
+
+        if($this->hasThumbnail){
+            $this->hasThumbnail = 1;
+        }
+
+
+        return parent::save($runValidation, $attributeNames);
     }
 }
