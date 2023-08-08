@@ -38,6 +38,10 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        // This is to enable cache cleaner in browser
+        'assetManager'=> [
+            'appendTimestamp'=> true,
+        ],
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
