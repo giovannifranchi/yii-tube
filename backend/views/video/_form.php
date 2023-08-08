@@ -5,7 +5,6 @@ use yii\bootstrap5\ActiveForm as Bootstrap5ActiveForm;
 
 /** @var yii\web\View $this */
 /** @var common\models\Video $model */
-/** @var yii\widgets\ActiveForm $form */
 ?>
 
 <div class="video-form">
