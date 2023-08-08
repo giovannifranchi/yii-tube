@@ -14,7 +14,7 @@ use yii\bootstrap5\NavBar;
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Dashboard', 'url' => ['/site/index']],
     ]; 
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav ms-auto mb-2 mb-md-0'],
