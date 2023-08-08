@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap5\ActiveForm as Bootstrap5ActiveForm;
 
 /** @var yii\web\View $this */
 /** @var common\models\Video $model */
@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 
 <div class="video-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = Bootstrap5ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'video_id')->textInput(['maxlength' => true]) ?>
 
@@ -38,6 +38,6 @@ use yii\widgets\ActiveForm;
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
-    <?php ActiveForm::end(); ?>
+    <?php Bootstrap5ActiveForm::end(); ?>
 
 </div>
