@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <p class="text-muted text-center">Your easy way to connet with the world</p>
             <button  class="btn btn-primary btn-file">
             Select File
-            <input type="file" id="video_file" name="video">
+            <input type="file" id="videoFile" name="video">
         </button>
 
         </div>
