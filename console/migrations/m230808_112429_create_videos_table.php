@@ -20,7 +20,6 @@ class m230808_112429_create_videos_table extends Migration
             'title' => $this->string()->notNull(),
             'video_name' => $this->string(),
             'tags' => $this->string(),
-            'thumbnail'=> $this->string(),
             'status' => $this->boolean(),
             'hasThumbnail' => $this->boolean(),
             'description' => $this->text(),
