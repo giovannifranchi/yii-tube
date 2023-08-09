@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use yii\bootstrap5\ActiveForm as Bootstrap5ActiveForm;
-\backend\assets\TagsInputAsset::register($this);
+// \backend\assets\TagsInputAsset::register($this); this was to register just here the asset bundle
+
 
 /** @var yii\web\View $this */
 /** @var common\models\Video $model */
