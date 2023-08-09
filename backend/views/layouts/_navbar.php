@@ -14,7 +14,7 @@ use yii\bootstrap5\NavBar;
         ],
     ]);
     $menuItems = [
-        ['label' => 'Create', 'url' => ['/video/index']],
+        ['label' => 'Create', 'url' => ['/video/create']],
     ]; 
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav ms-auto mb-2 mb-md-0'],
