@@ -157,4 +157,12 @@ class Video extends \yii\db\ActiveRecord
     {
         return Yii::$app->params['frontendURL'] . "storage/videos/" . $this->video_id . ".mp4";
     }
+
+    public function getStatusLabels()
+    {
+        return [
+            self::STATUS_UNLISTED => 'Unlisted',
+            self::STATUS_PUBLISHED => 'Published'
+        ];
+    }
 }
