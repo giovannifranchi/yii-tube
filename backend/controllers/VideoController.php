@@ -138,6 +138,7 @@ class VideoController extends Controller
     /**
      * Finds the Video model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     * I added this implementation which protects routes also within auth users
      * @param string $video_id Video ID
      * @return Video the loaded model
      * @throws NotFoundHttpException if the model cannot be found
