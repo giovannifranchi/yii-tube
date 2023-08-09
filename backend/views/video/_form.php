@@ -21,6 +21,11 @@ use yii\bootstrap5\Dropdown;
 
         <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
+        <div class="mb-3">
+            <label for="formFile" class="form-label"><?= $model->getAttributeLabel('thumbnail') ?></label>
+            <input class="form-control" type="file" id="thumbnail">
+        </div>
+
         <div class="form-group">
             <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
         </div>
@@ -33,11 +38,11 @@ use yii\bootstrap5\Dropdown;
         </div>
 
         <h4 class="text-muted">Video Link</h4>
-        <h5 ><a href="<?= $model->getVideoLink() ?>" class="text-decoration-none">Open Link</a></h5>
+        <h5><a href="<?= $model->getVideoLink() ?>" class="text-decoration-none">Open Link</a></h5>
         <h4 class="text-muted">Video Name</h4>
         <h5 class="mb-3"><?= $model->video_name ?></h5>
         <h4 class="text-muted">Uploaded At</h4>
-        <h5 ><?= Yii::$app->formatter->asDatetime($model->created_at) ?></h5>
+        <h5><?= Yii::$app->formatter->asDatetime($model->created_at) ?></h5>
 
         <?= $form->field($model, 'status')->dropDownList($model->getStatusLabels()) ?>
 
