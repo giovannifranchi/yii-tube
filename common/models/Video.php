@@ -127,7 +127,7 @@ class Video extends \yii\db\ActiveRecord
             $this->video_name = $this->video->name;
         }
 
-        if($this->hasThumbnail){
+        if($this->thumbnail){
             $this->hasThumbnail = 1;
         }
 
@@ -144,7 +144,7 @@ class Video extends \yii\db\ActiveRecord
         }
 
         if($this->thumbnail){
-            $thumbnailPath = Yii::getAlias("@frontend/web/storage/thumbs/". $this->thumbnail . 'jpg');
+            $thumbnailPath = Yii::getAlias("@frontend/web/storage/thumbs/". $this->video_id . 'jpg');
             if(!is_dir(dirname($thumbnailPath))){
                 FileHelper::createDirectory(dirname($thumbnailPath));
             }
