@@ -21,24 +21,23 @@ class VideoController extends Controller
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'access' => [
-                    'class' => AccessControl::class,
-                    'rule' => [
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
                         'allow' => true,
                         'roles' => ['@']
                     ]
+                ]
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
                 ],
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
+            ],
+        ];
     }
 
     /**
@@ -91,7 +90,7 @@ class VideoController extends Controller
 
         $model->video = UploadedFile::getInstanceByName('video');
 
-        if(Yii::$app->request->isPost && $model->save()){
+        if (Yii::$app->request->isPost && $model->save()) {
             return $this->redirect(['update', 'video_id' => $model->video_id]);
         }
 
