@@ -11,7 +11,7 @@ use yii\bootstrap5\Dropdown;
 <div class="video-form">
 
     <?php $form = Bootstrap5ActiveForm::begin([
-        'options' => ['class' => 'row']
+        'options' => ['class' => 'row', 'enctype' => 'multipart/form-data']
     ]); ?>
 
     <div class="col-sm-8">
@@ -23,7 +23,7 @@ use yii\bootstrap5\Dropdown;
 
         <div class="mb-3">
             <label for="formFile" class="form-label"><?= $model->getAttributeLabel('thumbnail') ?></label>
-            <input class="form-control" type="file" id="thumbnail">
+            <input class="form-control" type="file" id="thumbnail" name="thumbnail">
         </div>
 
         <div class="form-group">
@@ -34,7 +34,7 @@ use yii\bootstrap5\Dropdown;
     <div class="col-sm-4">
         <h3>Video</h3>
         <div class="ratio ratio-16x9 mb-4">
-            <video src="<?= $model->getVideoLink() ?>" title="<?= $model->video_name ?>" allowfullscreen controls></video>
+            <video src="<?= $model->getVideoLink() ?>" title="<?= $model->video_name ?>" allowfullscreen controls poster="<?= $model->getThumbLink()?>"></video>
         </div>
 
         <h4 class="text-muted">Video Link</h4>

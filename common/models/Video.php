@@ -6,6 +6,7 @@ use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\FileHelper;
+use yii\imagine\Image;
 
 
 /**
@@ -144,11 +145,12 @@ class Video extends \yii\db\ActiveRecord
         }
 
         if($this->thumbnail){
-            $thumbnailPath = Yii::getAlias("@frontend/web/storage/thumbs/". $this->video_id . 'jpg');
+            $thumbnailPath = Yii::getAlias("@frontend/web/storage/thumbs/" . $this->video_id . ".jpg");
             if(!is_dir(dirname($thumbnailPath))){
                 FileHelper::createDirectory(dirname($thumbnailPath));
             }
             $this->thumbnail->saveAs($thumbnailPath);
+            // Image::getImagine()->open($thumbnailPath)->thumbnail(new Box(1280, 1280))->save();
         }
 
         return true;
@@ -161,7 +163,7 @@ class Video extends \yii\db\ActiveRecord
 
     public function getThumbLink()
     {
-        return $this->hasThumbnail ? Yii::$app->params['frontendURL'] . "storage/thumbs" . $this->video_id . "jpg" : "" ;
+        return $this->hasThumbnail ? Yii::$app->params['frontendURL'] . "storage/thumbs/" . $this->video_id . ".jpg" : "" ;
     }
 
     public function getStatusLabels()
