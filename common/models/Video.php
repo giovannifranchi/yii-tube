@@ -91,6 +91,7 @@ class Video extends \yii\db\ActiveRecord
             'status' => 'Status',
             'hasThumbnail' => 'Has Thumbnail',
             'description' => 'Description',
+            'thumbnail' => 'Thumbnail',
             'created_by' => 'Created By',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
