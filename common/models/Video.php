@@ -6,8 +6,7 @@ use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\FileHelper;
-// use yii\imagine\Image;
-// use Imagine\Image\Box;
+use yii\imagine\Image;
 
 
 /**
@@ -153,7 +152,7 @@ class Video extends \yii\db\ActiveRecord
                 FileHelper::createDirectory(dirname($thumbnailPath));
             }
             $this->thumbnail->saveAs($thumbnailPath);
-            // Image::getImagine()->open($thumbnailPath)->thumbnail(new Box(1280, 1280))->save();
+            Image::thumbnail($thumbnailPath, 1280, floor((1280 * 9) / 16) )->save();
         }
 
         return true;
