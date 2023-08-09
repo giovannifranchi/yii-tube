@@ -135,7 +135,7 @@ class Video extends \yii\db\ActiveRecord
         if(!$saved) return false;
 
         if($isInsert){
-            $videoPath = Yii::getAlias("@frontend/web/storage/videos" . $this->video_id . '.mp4');
+            $videoPath = Yii::getAlias("@frontend/web/storage/videos/" . $this->video_id . '.mp4');
             if(!is_dir(dirname($videoPath))){
                 FileHelper::createDirectory(dirname($videoPath));
             }
@@ -143,7 +143,7 @@ class Video extends \yii\db\ActiveRecord
         }
 
         if($this->thumbnail){
-            $thumbnailPath = Yii::getAlias("@frontend/web/storage/thumbs". $this->thumbnail . 'jpg');
+            $thumbnailPath = Yii::getAlias("@frontend/web/storage/thumbs/". $this->thumbnail . 'jpg');
             if(!is_dir(dirname($thumbnailPath))){
                 FileHelper::createDirectory(dirname($thumbnailPath));
             }
@@ -151,5 +151,10 @@ class Video extends \yii\db\ActiveRecord
         }
 
         return true;
+    }
+
+    public function getVideoLink()
+    {
+        return Yii::$app->params['frontendURL'] . "storage/videos/" . $this->video_id . ".mp4";
     }
 }
