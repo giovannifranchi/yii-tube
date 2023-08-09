@@ -76,6 +76,7 @@ class Video extends \yii\db\ActiveRecord
             [['video_id'], 'string', 'max' => 8],
             [['title', 'video_name', 'tags'], 'string', 'max' => 255],
             [['video_id'], 'unique'],
+            ['thumbnail', 'image', 'minWidth' => 1280],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['created_by' => 'id']],
         ];
     }
