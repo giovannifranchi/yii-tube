@@ -6,7 +6,8 @@ use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\FileHelper;
-use yii\imagine\Image;
+// use yii\imagine\Image;
+// use Imagine\Image\Box;
 
 
 /**

@@ -14,6 +14,8 @@ use yii\bootstrap5\Dropdown;
         'options' => ['class' => 'row', 'enctype' => 'multipart/form-data']
     ]); ?>
 
+    <?= $form->errorSummary($model) ?>
+
     <div class="col-sm-8">
         <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
