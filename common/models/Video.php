@@ -3,6 +3,8 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
 use yii\helpers\FileHelper;
 
 
@@ -25,6 +27,9 @@ use yii\helpers\FileHelper;
 class Video extends \yii\db\ActiveRecord
 {
 
+    const STATUS_UNLISTED = 0;
+    const STATUS_PUBLISHED = 1;
+ 
     /**
      * @var \yii\web\UploadedFile
      */
@@ -44,6 +49,17 @@ class Video extends \yii\db\ActiveRecord
         return '{{%video}}';
     }
 
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::class,
+            [
+                'class'=> BlameableBehavior::class,
+                'updatedByAttribute'=>false
+            ]
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -52,6 +68,8 @@ class Video extends \yii\db\ActiveRecord
         return [
             [['video_id', 'title'], 'required'],
             [['status', 'hasThumbnail', 'created_by', 'created_at', 'updated_at'], 'integer'],
+            ['status', 'default', 'value' => self::STATUS_UNLISTED],
+            ['hasThumbnail', 'default', 'value'=> 0],
             [['description'], 'string'],
             [['video_id'], 'string', 'max' => 8],
             [['title', 'video_name', 'tags'], 'string', 'max' => 255],

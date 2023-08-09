@@ -19,8 +19,6 @@ use yii\bootstrap5\ActiveForm as Bootstrap5ActiveForm;
 
     <?= $form->field($model, 'tags')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'thumbnail')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'status')->textInput() ?>
 
     <?= $form->field($model, 'hasThumbnail')->textInput() ?>
