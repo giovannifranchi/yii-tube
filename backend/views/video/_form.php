@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap5\ActiveForm as Bootstrap5ActiveForm;
-use yii\bootstrap5\Dropdown;
+\backend\assets\TagsInputAsset::register($this);
 
 /** @var yii\web\View $this */
 /** @var common\models\Video $model */
