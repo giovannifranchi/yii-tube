@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Select File
             <input type="file" id="videoFile" name="video">
         </button>
-
+        <?= $form->errorSummary($model) ?>
         </div>
 
     <?php ActiveForm::end() ?>
