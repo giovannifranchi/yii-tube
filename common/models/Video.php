@@ -13,7 +13,6 @@ use yii\helpers\FileHelper;
  * @property string $title
  * @property string|null $video_name
  * @property string|null $tags
- * @property string|null $thumbnail
  * @property int|null $status
  * @property int|null $hasThumbnail
  * @property string|null $description
@@ -30,6 +29,11 @@ class Video extends \yii\db\ActiveRecord
      * @var \yii\web\UploadedFile
      */
     public $video;
+
+    /**
+     * @var \yii\web\UploadedFile
+     */
+    public $thumbnail;
 
 
     /**
@@ -50,7 +54,7 @@ class Video extends \yii\db\ActiveRecord
             [['status', 'hasThumbnail', 'created_by', 'created_at', 'updated_at'], 'integer'],
             [['description'], 'string'],
             [['video_id'], 'string', 'max' => 8],
-            [['title', 'video_name', 'tags', 'thumbnail'], 'string', 'max' => 255],
+            [['title', 'video_name', 'tags'], 'string', 'max' => 255],
             [['video_id'], 'unique'],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['created_by' => 'id']],
         ];
@@ -66,7 +70,6 @@ class Video extends \yii\db\ActiveRecord
             'title' => 'Title',
             'video_name' => 'Video Name',
             'tags' => 'Tags',
-            'thumbnail' => 'Thumbnail',
             'status' => 'Status',
             'hasThumbnail' => 'Has Thumbnail',
             'description' => 'Description',
@@ -126,7 +129,9 @@ class Video extends \yii\db\ActiveRecord
             if(!is_dir(dirname($thumbnailPath))){
                 FileHelper::createDirectory(dirname($thumbnailPath));
             }
-    
+            $this->thumbnail->saveAs($thumbnailPath);
         }
+
+        return true;
     }
 }
