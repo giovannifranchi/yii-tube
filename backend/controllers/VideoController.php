@@ -107,7 +107,7 @@ class VideoController extends Controller
             return $this->redirect(['view', 'video_id' => $model->video_id]);
         }
 
-        return $this->render('', [
+        return $this->render('update', [
             'model' => $model,
         ]);
     }
