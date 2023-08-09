@@ -2,6 +2,9 @@
 
 namespace common\models\query;
 
+use common\models\Video;
+use yii\web\NotFoundHttpException;
+
 /**
  * This is the ActiveQuery class for [[\common\models\Video]].
  *
@@ -33,10 +36,11 @@ class VideoQuery extends \yii\db\ActiveQuery
     }
 
     public function creator($user_id){
-        return $this->andWhere('created_by', $user_id);
+        return $this->andWhere(['created_by' => $user_id]);
     }
 
     public function latest(){
-        return $this->orderBy('created_at', SORT_DESC);
+        return $this->orderBy(['created_at' => SORT_DESC]);
     }
+
 }

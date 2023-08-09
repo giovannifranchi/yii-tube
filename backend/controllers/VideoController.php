@@ -144,7 +144,8 @@ class VideoController extends Controller
      */
     protected function findModel($video_id)
     {
-        if (($model = Video::findOne(['video_id' => $video_id])) !== null) {
+        $model = Video::findOne(['video_id' => $video_id]);
+        if($model && Yii::$app->user->id === $model->created_by){
             return $model;
         }
 
