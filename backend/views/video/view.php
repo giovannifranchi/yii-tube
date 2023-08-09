@@ -33,7 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'video_name',
             'tags',
-            'thumbnail',
             'status',
             'hasThumbnail',
             'description:ntext',
