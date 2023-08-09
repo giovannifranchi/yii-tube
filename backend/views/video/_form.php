@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use yii\bootstrap5\ActiveForm as Bootstrap5ActiveForm;
-// \backend\assets\TagsInputAsset::register($this); this was to register just here the asset bundle
+
+\backend\assets\TagsInputAsset::register($this);
 
 
 /** @var yii\web\View $this */
@@ -37,7 +38,7 @@ use yii\bootstrap5\ActiveForm as Bootstrap5ActiveForm;
     <div class="col-sm-4">
         <h3>Video</h3>
         <div class="ratio ratio-16x9 mb-4">
-            <video src="<?= $model->getVideoLink() ?>" title="<?= $model->video_name ?>" allowfullscreen controls poster="<?= $model->getThumbLink()?>"></video>
+            <video src="<?= $model->getVideoLink() ?>" title="<?= $model->video_name ?>" allowfullscreen controls poster="<?= $model->getThumbLink() ?>"></video>
         </div>
 
         <h4 class="text-muted">Video Link</h4>

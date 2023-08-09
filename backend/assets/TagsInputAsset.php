@@ -3,19 +3,19 @@
 namespace backend\assets;
 
 use yii\web\AssetBundle;
-use yii\web\JqueryAsset;
+
 
 class TagsInputAsset extends AssetBundle 
 {
+    
     public $basePath = '@webroot/tagsinput';
     public $baseUrl = '@web/tagsinput';
     public $css = [
-        'bootstrap-tagsinput.css'
+        'https://unpkg.com/@yaireo/tagify/dist/tagify.css'
     ];
     public $js = [
-        'bootstrap-tagsinput.js'
-    ];
-    public $depends = [
-        JqueryAsset::class
+        'https://unpkg.com/@yaireo/tagify',
+        'https://unpkg.com/@yaireo/tagify@3.1.0/dist/tagify.polyfills.min.js',
+        'tagsinput.js'
     ];
 }
