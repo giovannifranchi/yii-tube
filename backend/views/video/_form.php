@@ -39,7 +39,7 @@ use yii\bootstrap5\Dropdown;
         <h4 class="text-muted">Uploaded At</h4>
         <h5 ><?= Yii::$app->formatter->asDatetime($model->created_at) ?></h5>
 
-        <?= $form->field($model, 'status')->Html::dropDownList($name, $selection = null, $items = [], $options = []) ?>
+        <?= $form->field($model, 'status')->dropDownList($model->getStatusLabels()) ?>
 
 
     </div>
