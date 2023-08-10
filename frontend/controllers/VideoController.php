@@ -14,25 +14,25 @@ use yii\web\NotFoundHttpException;
 class VideoController extends Controller
 {
 
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-                    'allow' => true,
-                    'only' => ['like', 'dislike'],
-                    'roles' => ['@']
-                ]
-            ],
-            'verbs' => [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    'delete' => ['POST']
-                ],
-            ],
-        ];
-    }
+    // public function behaviors()
+    // {
+    //     return [
+    //         'access' => [
+    //             'class' => AccessControl::class,
+    //             'rules' => [
+    //                 'allow' => true,
+    //                 'only' => ['like', 'dislike'],
+    //                 'roles' => ['@']
+    //             ]
+    //         ],
+    //         'verbs' => [
+    //             'class' => VerbFilter::class,
+    //             'actions' => [
+    //                 'delete' => ['POST']
+    //             ],
+    //         ],
+    //     ];
+    // }
 
 
     public function actionIndex()
@@ -55,6 +55,16 @@ class VideoController extends Controller
         $videoView->custumSave($user->id, $video_id);
         
         return $this->render('view', ['model'=> $model]);
+    }
+
+    public function actionLike()
+    {
+
+    }
+
+    public function actionDislike()
+    {
+
     }
 
     public function findModel($video_id){
