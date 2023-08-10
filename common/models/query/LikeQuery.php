@@ -31,4 +31,8 @@ class LikeQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+
+    public function isLikedBy($_video_id, $_user_id){
+        return $this->andWhere(['user_id' => $_user_id])->andWhere(['video_id' => $_video_id]);
+    }
 }

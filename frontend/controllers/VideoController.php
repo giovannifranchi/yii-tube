@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Like;
 use common\models\Video;
 use common\models\VideoView;
 use Yii;
@@ -56,12 +57,17 @@ class VideoController extends Controller
         return $this->render('view', ['model'=> $model]);
     }
 
-    public function actionLike()
+    public function actionLike($video_id)
     {
+        $video = $this->findModel($video_id);
+        $user = Yii::$app->user;
 
+        $likedVideo = Like::find()->isLikedBy($video->video_id, $user->id);
+        
+ 
     }
 
-    public function actionDislike()
+    public function actionDislike($video_id)
     {
 
     }

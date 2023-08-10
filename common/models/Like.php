@@ -82,4 +82,14 @@ class Like extends \yii\db\ActiveRecord
     {
         return new \common\models\query\LikeQuery(get_called_class());
     }
+
+    public function customSave($_user_id, $_video_id, $runValidation = true, $attributeNames = null)
+    {
+        
+        $this->user_id = $_user_id;
+        $this->video_id = $_video_id;
+        $this->created_at = time();
+
+        return parent::save($runValidation, $attributeNames);
+    }
 }
