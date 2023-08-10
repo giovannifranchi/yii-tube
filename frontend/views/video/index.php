@@ -1,1 +1,7 @@
-<div>index video</div>
+<?php
+
+
+var_dump($dataProvider);
+
+?>
+
