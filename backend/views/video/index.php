@@ -8,7 +8,7 @@ use yii\grid\GridView;
 
 /** @var yii\web\View $this */
 /** @var yii\data\ActiveDataProvider $dataProvider */
-/** @var common\models\Video  $model */
+/** @var common\models\Video  $model*/
 
 $this->title = 'Videos';
 $this->params['breadcrumbs'][] = $this->title;
@@ -43,15 +43,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_at:datetime',
             'updated_at:datetime',
             [
-                'class' => ActionColumn::class,
-                'buttons' => [
-                    'delete' => function($url){
-                        return Html::a('<i class="fa-solid fa-trash"></i>', $url, [
-                            'data-method' => 'post',
-                            'data-confirm' => 'Are you sure you want to delete this video?'
-                        ]);
-                    }
-                ]
+                'attribute' => '',
+                'content' => function($model){
+                    return Html::a('<i class="fa-solid fa-trash"></i>', Url::to(['video/delete', 'video_id' => $model->video_id], true), [ 
+                        'data-method' => 'post',
+                        'data-confirm' => 'are you sure you want to delete this video?'
+                    ]);
+                }
+
             ],
         ],
     ]); ?>
