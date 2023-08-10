@@ -14,7 +14,7 @@ use yii\bootstrap5\NavBar;
         ],
     ]);
     $menuItems = [
-        ['label' => 'Create', 'url' => ['/video/create']],
+        
     ]; 
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav ms-auto mb-2 mb-md-0'],
@@ -22,6 +22,7 @@ use yii\bootstrap5\NavBar;
     ]);
     if (Yii::$app->user->isGuest) {
         echo Html::tag('div',Html::a('Login',['/site/login'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
+        echo Html::tag('div',Html::a('SignUp',['/site/signup'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
     } else {
         echo Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
             . Html::submitButton(

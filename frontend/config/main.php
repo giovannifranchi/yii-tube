@@ -1,4 +1,7 @@
 <?php
+
+use yii\helpers\Url;
+
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
     require __DIR__ . '/../../common/config/params-local.php',
@@ -11,6 +14,8 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'name' => 'YII-TUBE',
+    // 'defaultRoute' => Url::to(['video/index'], $schema = true),
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
@@ -35,15 +40,16 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
-        ],
-        /*
+        ],       
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+        'assetManager'=> [
+            'appendTimestamp' => true
+        ]
     ],
     'params' => $params,
 ];
