@@ -4,7 +4,7 @@ use yii\bootstrap5\Nav;
 ?>
 
 
-<aside class="shadow" style="width: 200px;">
+<aside class="shadow" style="min-width: 200px;">
     <?php
 
     echo Nav::widget([
@@ -14,8 +14,6 @@ use yii\bootstrap5\Nav;
             ['label'=> 'Videos', 'url'=>['/video/index']],
         ]
     ])
-
-
 
     ?>
     
