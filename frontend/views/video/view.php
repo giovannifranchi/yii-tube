@@ -1,5 +1,9 @@
 <?php
 
+use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\widgets\Pjax;
+
 /** @var common\models\Video $model */
 
 ?>
@@ -14,12 +18,9 @@
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div>views <?= $model->getViews()->count() ?> • <?= YII::$app->formatter->asDate($model->created_at) ?> </div>
             <div>
-                <button class="btn btn-sm btn-outline-secondary">
-                    <i class="fa-solid fa-thumbs-up"></i> 9
-                </button>
-                <button class="btn btn-sm btn-outline-secondary">
-                    <i class="fa-solid fa-thumbs-down"></i> 2
-                </button>
+                <?php Pjax::begin() ?>
+                <?= $this->render('_like_buttons', ['model' => $model]) ?>
+                <?php Pjax::end() ?>
             </div>
         </div>
         <h5> <a href=""><?= $model->createdBy->username ?> </a></h5>

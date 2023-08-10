@@ -66,28 +66,43 @@ class VideoController extends Controller
 
     public function actionLike($video_id)
     {
+
         $video = $this->findModel($video_id);
         $user = Yii::$app->user;
 
-        $likedVideo = Like::find()->isLikedBy($video->video_id, $user->id);
+        $likedVideo = Like::find()->isLikedBy($video->video_id, $user->id)->one();
 
         if(!$likedVideo){
             $likedVideo = new Like();
-            return $likedVideo->customSave($user->id, $video->video_id, self::STATUS_LIKE);
+            $likedVideo->customSave($user->id, $video->video_id, self::STATUS_LIKE);
         }else if($likedVideo && $likedVideo->type === self::STATUS_LIKE){
-            return $likedVideo->delete();
+            $likedVideo->delete();
         }else{
             $likedVideo->delete();
             $likedVideo = new Like();
-            return $likedVideo->customSave($user->id, $video->video_id, self::STATUS_LIKE);
+            $likedVideo->customSave($user->id, $video->video_id, self::STATUS_LIKE);
         }
+
+        return $this->renderAjax('_like_buttons', ['model' => $video]);
         
- 
     }
 
     public function actionDislike($video_id)
     {
-
+        $video = $this->findModel($video_id);
+        $user = Yii::$app->user;
+        $dislikedVideo = Like::find()->isLikedBy($video_id, $user->id)->one();
+        if(!$dislikedVideo){
+            $dislikedVideo = new Like();
+            $dislikedVideo->customSave($user->id, $video_id, self::STATUS_DISLIKE);
+        }else if($dislikedVideo->type === self::STATUS_DISLIKE){
+            $dislikedVideo->delete();
+        }else{
+            $dislikedVideo->delete();
+            $dislikedVideo = new Like();
+            $dislikedVideo->customSave($user->id, $video_id, self::STATUS_DISLIKE);
+        }
+        return $this->renderAjax('_like_buttons', ['model' => $video]);
     }
 
     public function findModel($video_id){

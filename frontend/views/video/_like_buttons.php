@@ -7,11 +7,9 @@ use yii\helpers\Url;
 
 
 
-<div>
-    <a href="<?= Url::to('/video/like') ?>" class="btn btn-sm btn-outline-secondary">
-        <i class="fa-solid fa-thumbs-up"></i> 9
-    </a>
-    <a href="" class="btn btn-sm btn-outline-secondary">
-        <i class="fa-solid fa-thumbs-down"></i> 2
-    </a>
-</div>
+<a href="<?php echo Url::to(['/video/like', 'video_id' => $model->video_id]) ?>" class="btn btn-sm" data-method="post" data-pjax="1">
+    <i class="fas fa-thumbs-up"></i> 8
+</a>
+<a href="<?php echo Url::to(['/video/dislike', 'video_id' => $model->video_id]) ?>" class="btn btn-sm" data-method="post" data-pjax="1">
+    <i class="fas fa-thumbs-down"></i> 9
+</a>

@@ -91,6 +91,6 @@ class Like extends \yii\db\ActiveRecord
         $this->type = $_type;
         $this->created_at = time();
 
-        return parent::save($runValidation, $attributeNames);
+        parent::save($runValidation, $attributeNames);
     }
 }
