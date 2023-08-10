@@ -6,11 +6,35 @@ use common\models\Video;
 use common\models\VideoView;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 class VideoController extends Controller
 {
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    'allow' => true,
+                    'only' => ['like', 'dislike'],
+                    'roles' => ['@']
+                ]
+            ],
+            'verbs' => [
+                'class' => VerbFilter::class,
+                'actions' => [
+                    'delete' => ['POST']
+                ],
+            ],
+        ];
+    }
+
+
     public function actionIndex()
     {
         $this->layout = 'main';

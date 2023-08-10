@@ -31,6 +31,9 @@ class Video extends \yii\db\ActiveRecord
 
     const STATUS_UNLISTED = 0;
     const STATUS_PUBLISHED = 1;
+
+    const STATUS_LIKE = 1;
+    const STATUS_DISLIKE = 0;
  
     /**
      * @var \yii\web\UploadedFile
