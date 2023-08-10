@@ -112,6 +112,17 @@ class Video extends \yii\db\ActiveRecord
         return $this->hasOne(User::class, ['id' => 'created_by']);
     }
 
+
+    /**
+     * Gets query for [[Views]].
+     *
+     * @return \yii\db\ActiveQuery|\common\models\query\VideoViewQuery
+     */
+    public function getViews()
+    {
+        return $this->hasMany(VideoView::class, ['video_id' => 'video_id']);
+    }
+
     /**
      * {@inheritdoc}
      * @return \common\models\query\VideoQuery the active query used by this AR class.

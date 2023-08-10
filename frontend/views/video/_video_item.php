@@ -16,7 +16,7 @@ use yii\helpers\Url;
         <h5 class="card-title"><?= $model->title ?></h5>
         <a href="#" class="text-decoration-none"><?= $model->createdBy->username ?></a>
         <p class="card-text">
-            views 123 • <?= YII::$app->formatter->asRelativeTime($model->created_at) ?>
+            views <?= $model->getViews()->count() ?> • <?= YII::$app->formatter->asRelativeTime($model->created_at) ?>
         </p>
     </div>
 </div>

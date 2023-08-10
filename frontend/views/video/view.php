@@ -12,7 +12,7 @@
         </div>
         <h4><?= $model->title ?></h4>
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <div>views 123 • <?= YII::$app->formatter->asDate($model->created_at) ?> </div>
+            <div>views <?= $model->getViews()->count() ?> • <?= YII::$app->formatter->asDate($model->created_at) ?> </div>
             <div>
                 <button class="btn btn-sm btn-outline-secondary">
                     <i class="fa-solid fa-thumbs-up"></i> 9
