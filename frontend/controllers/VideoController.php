@@ -63,6 +63,12 @@ class VideoController extends Controller
         $user = Yii::$app->user;
 
         $likedVideo = Like::find()->isLikedBy($video->video_id, $user->id);
+
+        if(!$likedVideo){
+            $likedVideo = new Like();
+            $likedVideo->user_id = $user->id;
+            
+        }
         
  
     }
