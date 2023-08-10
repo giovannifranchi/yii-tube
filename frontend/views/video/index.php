@@ -1,7 +1,8 @@
 <?php
 
-
-var_dump($dataProvider);
+use yii\bootstrap5\Html;
 
 ?>
+
+<div>video</div>
 

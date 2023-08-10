@@ -187,4 +187,5 @@ class Video extends \yii\db\ActiveRecord
             self::STATUS_PUBLISHED => 'Published'
         ];
     }
+
 }

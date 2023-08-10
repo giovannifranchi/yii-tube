@@ -39,6 +39,10 @@ class VideoQuery extends \yii\db\ActiveQuery
         return $this->andWhere(['created_by' => $user_id]);
     }
 
+    public function published(){
+        return $this->andWhere(['status' => Video::STATUS_PUBLISHED]);
+    }
+
     public function latest(){
         return $this->orderBy(['created_at' => SORT_DESC]);
     }
