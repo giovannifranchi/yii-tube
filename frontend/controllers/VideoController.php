@@ -91,7 +91,9 @@ class VideoController extends Controller
     {
         $video = $this->findModel($video_id);
         $user = Yii::$app->user;
+
         $dislikedVideo = Like::find()->isLikedBy($video_id, $user->id)->one();
+
         if(!$dislikedVideo){
             $dislikedVideo = new Like();
             $dislikedVideo->customSave($user->id, $video_id, self::STATUS_DISLIKE);
@@ -102,6 +104,7 @@ class VideoController extends Controller
             $dislikedVideo = new Like();
             $dislikedVideo->customSave($user->id, $video_id, self::STATUS_DISLIKE);
         }
+        
         return $this->renderAjax('_like_buttons', ['model' => $video]);
     }
 

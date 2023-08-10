@@ -32,6 +32,10 @@ class Video extends \yii\db\ActiveRecord
     const STATUS_UNLISTED = 0;
     const STATUS_PUBLISHED = 1;
  
+    const STATUS_LIKE = 1;
+    const STATUS_DISLIKE = 0;
+
+
     /**
      * @var \yii\web\UploadedFile
      */
@@ -208,5 +212,29 @@ class Video extends \yii\db\ActiveRecord
             self::STATUS_PUBLISHED => 'Published'
         ];
     }
+
+    public function getPositiveLikes()
+    {
+        return $this->getLikes()->andWhere(['type' => self::STATUS_LIKE])->count();
+    }
+
+    public function getNegativeLikes()
+    {
+        return $this->getLikes()->andWhere(['type' => self::STATUS_DISLIKE])->count();
+    }
+
+    public function getIsLikedBy($user_id, $video_id)
+    {
+        if(!$user_id) return false;
+        return Like::find()->isLikedBy($video_id, $user_id)->andWhere(['type'=>self::STATUS_LIKE])->one();
+    }
+
+    public function getIsDislikedBy($user_id, $video_id)
+    {
+        if(!$user_id) return false;
+        return Like::find()->isLikedBy($video_id, $user_id)->andWhere(['type'=>self::STATUS_DISLIKE])->one();
+    }
+
+    
 
 }
