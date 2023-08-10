@@ -15,6 +15,9 @@ use yii\web\NotFoundHttpException;
 class VideoController extends Controller
 {
 
+    const STATUS_LIKE = 1;
+    const STATUS_DISLIKE = 0;
+
     // public function behaviors()
     // {
     //     return [
@@ -66,8 +69,13 @@ class VideoController extends Controller
 
         if(!$likedVideo){
             $likedVideo = new Like();
-            $likedVideo->user_id = $user->id;
-            
+            return $likedVideo->customSave($user->id, $video->video_id, self::STATUS_LIKE);
+        }else if($likedVideo && $likedVideo->type === self::STATUS_LIKE){
+            return $likedVideo->delete();
+        }else{
+            $likedVideo->delete();
+            $likedVideo = new Like();
+            return $likedVideo->customSave($user->id, $video->video_id, self::STATUS_LIKE);
         }
         
  
