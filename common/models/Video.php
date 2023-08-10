@@ -8,6 +8,7 @@ use yii\behaviors\TimestampBehavior;
 use yii\helpers\FileHelper;
 use yii\imagine\Image;
 
+use function PHPUnit\Framework\fileExists;
 
 /**
  * This is the model class for table "{{%video}}".
@@ -156,6 +157,17 @@ class Video extends \yii\db\ActiveRecord
         }
 
         return true;
+    }
+
+    public function afterDelete()
+    {
+        parent::afterDelete();
+        $videoPath = Yii::getAlias("@frontend/web/storage/videos" . $this->video_id . ".mp4");
+        unlink($videoPath);
+        $thumbnailPath = Yii::getAlias("@frontend/web/storage/thumbs" . $this->video_id . "jpg");
+        if(fileExists($thumbnailPath)){
+            unlink($thumbnailPath);
+        }
     }
 
     public function getVideoLink()

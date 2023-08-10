@@ -131,7 +131,6 @@ class VideoController extends Controller
     public function actionDelete($video_id)
     {
         $this->findModel($video_id)->delete();
-
         return $this->redirect(['index']);
     }
 
