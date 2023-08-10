@@ -84,7 +84,7 @@ class VideoView extends \yii\db\ActiveRecord
     public function custumSave($_user_id, $_video_id, $runValidation = true, $attributeNames = null)
     {
         $this->video_id = $_video_id;
-        $this->video_id = $_video_id;
+        $this->user_id = $_user_id;
         $this->created_at = time();
         return parent::save($runValidation, $attributeNames);
     }
