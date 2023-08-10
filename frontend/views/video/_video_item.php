@@ -7,7 +7,7 @@ use yii\helpers\Url;
 ?>
 
 <div class="card h-100">
-    <a href="<?= Url::to(['video/update', 'video_id' => $model->video_id]) ?>">
+    <a href="<?= Url::to(['/video/view', 'video_id' => $model->video_id]) ?>">
         <div class="ratio ratio-16x9">
             <video src="<?= $model->getVideoLink() ?>" title="<?= $model->video_name ?>" allowfullscreen poster="<?= $model->getThumbLink() ?>"></video>
         </div>
