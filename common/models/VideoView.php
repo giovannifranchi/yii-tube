@@ -81,8 +81,11 @@ class VideoView extends \yii\db\ActiveRecord
         return new \common\models\query\VideoViewQuery(get_called_class());
     }
 
-    public function save($runValidation = true, $attributeNames = null)
+    public function custumSave($_user_id, $_video_id, $runValidation = true, $attributeNames = null)
     {
-         parent::save($runValidation, $attributeNames);
+        $this->video_id = $_video_id;
+        $this->video_id = $_video_id;
+        $this->created_at = time();
+        return parent::save($runValidation, $attributeNames);
     }
 }

@@ -25,12 +25,10 @@ class VideoController extends Controller
     {
         $this->layout = 'auth';
         $model = $this->findModel($video_id);
+        $user = Yii::$app->user;
 
         $videoView = new VideoView();
-        $videoView->video_id = $video_id;
-        $videoView->user_id = Yii::$app->user->id ? Yii::$app->user->id : null;
-        $videoView->created_at = time();
-        $videoView->save();
+        $videoView->custumSave($user->id, $video_id);
         
         return $this->render('view', ['model'=> $model]);
     }
