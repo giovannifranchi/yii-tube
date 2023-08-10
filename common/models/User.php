@@ -210,4 +210,9 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
+    public function getLiked()
+    {
+        return $this->hasMany(Like::class, ['user_id' => 'id']);
+    }
 }
