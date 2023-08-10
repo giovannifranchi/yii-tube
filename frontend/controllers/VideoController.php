@@ -11,6 +11,7 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\AccessRule;
 
 class VideoController extends Controller
 {
@@ -18,25 +19,28 @@ class VideoController extends Controller
     const STATUS_LIKE = 1;
     const STATUS_DISLIKE = 0;
 
-    // public function behaviors()
-    // {
-    //     return [
-    //         'access' => [
-    //             'class' => AccessControl::class,
-    //             'rules' => [
-    //                 'allow' => true,
-    //                 'only' => ['like', 'dislike'],
-    //                 'roles' => ['@']
-    //             ]
-    //         ],
-    //         'verbs' => [
-    //             'class' => VerbFilter::class,
-    //             'actions' => [
-    //                 'delete' => ['POST']
-    //             ],
-    //         ],
-    //     ];
-    // }
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['like', 'dislike', 'history'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                    ]
+                ]
+            ],
+            'verb' => [
+                'class' => VerbFilter::class,
+                'actions' => [
+                    'like' => ['post'],
+                    'dislike' => ['post'],
+                ]
+            ]
+        ];
+    }
 
 
     public function actionIndex()
