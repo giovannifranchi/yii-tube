@@ -10,8 +10,9 @@ class VideoController extends Controller
 {
     public function actionIndex()
     {
+        $this->layout = 'main';
         $dataProvider = new ActiveDataProvider([
-            'query' => Video::find()->with('createdBy')
+            'query' => Video::find()
         ]);
 
         return $this->render('index', ['dataProvider' => $dataProvider]);

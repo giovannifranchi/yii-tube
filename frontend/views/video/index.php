@@ -1,8 +1,14 @@
 <?php
+/** @var yii\data\ActiveDataProvider $dataProvider */
 
-use yii\bootstrap5\Html;
+use yii\widgets\ListView;
 
 ?>
 
-<div>video</div>
+<?=
 
+ListView::widget([
+    'dataProvider' => $dataProvider
+]);
+
+?>
