@@ -9,6 +9,6 @@ use yii\helpers\Html;
 
 Hello, <?= $channel->username ?>
 
-You have a new subscription, follow this link to look up its profile <?= Html::channelLink($subscriber) ?>
+You have a new subscription, follow this link to look up its profile <?= $subscriber->username ?>
 
 YII Tube Team
