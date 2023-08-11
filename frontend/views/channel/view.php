@@ -10,9 +10,12 @@ ChannelAsset::register($this);
 ?>
 
 
-<div class="jumbotron d-flex align-items-center justify-content-center">
-    <h1 class="text-decoration-underline"><?= $model->username ?></h1>
+<div class="jumbotron d-flex flex-column justify-content-center px-3">
+    <h1 class="mb-0"><?= $model->username ?></h1>
+    <hr class="w-100 m-0" style="border-width: medium;">
 </div>
+
+
 
 <div class="container">
 <?=

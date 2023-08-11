@@ -215,4 +215,9 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->hasMany(Like::class, ['user_id' => 'id']);
     }
+
+    public function getSubscribers()
+    {
+        return $this->hasMany(User::class, ['channel_id' => 'id'])->viaTable('subscriber', ['subscriber_id' => 'id']);
+    }
 }
