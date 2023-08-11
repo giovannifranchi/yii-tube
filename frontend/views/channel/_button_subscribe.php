@@ -10,9 +10,9 @@ use yii\widgets\Pjax;
 
 <?php if ($model->id === Yii::$app->user->id) : ?>
 
-    <a href="<?= Url::to(['/channel/subscribe', 'channel_id' => $model->id]) ?>" class="btn btn-danger btn-sm mt-3"> 
-        this is your profile
-    </a>
+    <h3 class="text-danger mt-3">
+        <strong>You have <?= $model->getSubscribers()->count() ?> Subscribers</strong>
+    </h3>
 
 <?php else : ?>
 
