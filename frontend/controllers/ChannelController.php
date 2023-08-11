@@ -12,7 +12,7 @@ class ChannelController extends Controller
     {
         $this->layout = 'channel';
         $dataProvider = new ActiveDataProvider([
-            'query' => Video::find()->andWhere(['created_by' => $channel_id])->all(),
+            'query' => Video::find()->andWhere(['created_by' => $channel_id]),
         ]);
         $model = User::find()->andWhere(['id' => $channel_id])->one();
         return $this->render('view', ['model' => $model, 'dataProvider' => $dataProvider]);
