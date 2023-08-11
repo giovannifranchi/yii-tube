@@ -23,7 +23,7 @@ use yii\widgets\Pjax;
                 <?php Pjax::end() ?>
             </div>
         </div>
-        <h5> <a href=""><?= $model->createdBy->username ?> </a></h5>
+        <h5> <a href="<?= Url::to(['/channel/view', 'channel_id' => $model->created_by]) ?>"><?= $model->createdBy->username ?> </a></h5>
         <p><?= $model->description ?></p>
     </div>
     <div class="col-4">
