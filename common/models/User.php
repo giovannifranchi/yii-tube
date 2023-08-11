@@ -218,6 +218,11 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getSubscribers()
     {
-        return $this->hasMany(User::class, ['channel_id' => 'id'])->viaTable('subscriber', ['subscriber_id' => 'id']);
+        return $this->hasMany(User::class, ['id' => 'subscriber_id'])->viaTable('subscriber', ['channel_id' => 'id']);
+    }
+
+    public function isSubscribedBy($subscriber_id)
+    {
+        return $this->getSubscribers()->andWhere(['id' => $subscriber_id])->one();
     }
 }
