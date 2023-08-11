@@ -50,18 +50,13 @@ class ChannelController extends Controller
     {
         $model = User::findOne(['id' => $channel_id]);
         $subscriber = Yii::$app->user->id;
-        // $subscription = Subscriber::find()->isChannelSubscribedBy($channel_id, $subscriber)->one();
-        // if(!$subscription){
-        //     $subscriber = new Subscriber();
-        //     $subscriber->customSave($channel_id, $subscriber);
-        // }else{
-        //     $subscription->delete();
-        // }
-        $subscription = new Subscriber();
-        $subscription->channel_id = $channel_id;
-        $subscription->subscriber_id = $subscriber;
-        $subscription-> created_at = time();
-        $subscription->save();
+        $subscription = $model->isSubscribedBy($subscriber);
+        if(!$subscription){
+            $subscription = new Subscriber();
+            $subscription->customSave($channel_id, $subscriber);
+        }else {
+            $subscription->delete();
+        }
         return $this->renderAjax('_button_subscribe', ['model' => $model]);
     }
 }
