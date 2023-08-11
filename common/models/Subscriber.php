@@ -79,4 +79,18 @@ class Subscriber extends \yii\db\ActiveRecord
     {
         return new \common\models\query\SubscriberQuery(get_called_class());
     }
+
+    public function isSubscribedBy($_channel_id, $_subscriber_id)
+    {
+        if($_channel_id === $_subscriber_id) return 'same';
+        return $this->find()->isChannelSubscribedBy($_channel_id, $_subscriber_id);
+    }
+
+    public function customSave($channel_id, $subscriber_id, $runValidation = true, $attributeNames = null)
+    {
+        $this->channel_id = $channel_id;
+        $this->subscriber_id = $subscriber_id;
+        $this->created_at = time();
+        parent::save($runValidation, $attributeNames);
+    }
 }

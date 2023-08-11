@@ -43,4 +43,9 @@ class ChannelController extends Controller
         $model = User::find()->andWhere(['id' => $channel_id])->one();
         return $this->render('view', ['model' => $model, 'dataProvider' => $dataProvider]);
     }
+
+    public function actionSubscribe($channel_id)
+    {
+        
+    }
 }
