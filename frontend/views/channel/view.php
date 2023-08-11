@@ -8,6 +8,6 @@ ChannelAsset::register($this);
 ?>
 
 
-<div class="jumbotron d-flex align-items-center">
+<div class="jumbotron d-flex align-items-center justify-content-center">
     <h1 class="text-decoration-underline"><?= $model->username ?></h1>
 </div>
