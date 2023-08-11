@@ -54,6 +54,15 @@ class ChannelController extends Controller
         if(!$subscription){
             $subscription = new Subscriber();
             $subscription->customSave($channel_id, $subscriber);
+            Yii::$app->mailer->compose([
+                'html' => 'subscriber-hmtl', 'text' => 'subscriber-text'
+            ],
+            [
+                'channel' => $model, 'subscriber' => Yii::$app->user->identity
+            ])
+            ->setFrom(Yii::$app->params['senderEmail'])
+            ->setTo($model->email)
+            ->setSubject('You have a new subscriber');
         }else {
             $currenSubscription = Subscriber::find()->where(['channel_id' => $model->id, 'subscriber_id' => $subscriber])->one();
             $currenSubscription->delete();
