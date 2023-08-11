@@ -1,5 +1,11 @@
+<?php
+
+use frontend\assets\ChannelAsset;
+
+ChannelAsset::register($this);
+?>
 
 
-<div>
-    <?= $model ?>
+<div class="jumbotron">
+
 </div>
