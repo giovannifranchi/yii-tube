@@ -55,7 +55,8 @@ class ChannelController extends Controller
             $subscription = new Subscriber();
             $subscription->customSave($channel_id, $subscriber);
         }else {
-            $subscription->delete();
+            $currenSubscription = Subscriber::find()->where(['channel_id' => $model->id, 'subscriber_id' => $subscriber])->one();
+            $currenSubscription->delete();
         }
         return $this->renderAjax('_button_subscribe', ['model' => $model]);
     }

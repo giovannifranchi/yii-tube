@@ -32,9 +32,4 @@ class SubscriberQuery extends \yii\db\ActiveQuery
         return parent::one($db);
     }
 
-    public function isChannelSubscribedBy($channel_id, $subscriber_id)
-    {
-        return $this->andWhere(['channel_id' => $channel_id])->andWhere(['subscriber_id' => $subscriber_id]);
-    }
-
 }
