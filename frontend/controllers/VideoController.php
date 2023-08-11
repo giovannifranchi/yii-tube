@@ -108,6 +108,18 @@ class VideoController extends Controller
         return $this->renderAjax('_like_buttons', ['model' => $video]);
     }
 
+    public function actionSearch($keyword)
+    {
+        $query = video::find();
+        if($keyword){
+            $query->byKeyword($keyword);
+        }
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query
+        ]);
+        return $this->render('search', ['dataProvider' => $dataProvider]);
+    }
+
     public function findModel($video_id){
         $model = Video::findOne(['video_id' => $video_id]);
         if($model){
