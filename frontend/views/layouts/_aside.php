@@ -11,7 +11,7 @@ use yii\bootstrap5\Nav;
         'options'=> ['class'=> 'd-flex flex-column nav-pills'],
         'items'=> [
             ['label'=> 'Home', 'url'=>['/video/index'],],
-            ['label'=> 'History', 'url'=>['/video/history']],
+            ['label'=> 'History', 'url'=>['/history/index']],
         ]
     ])
 

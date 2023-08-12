@@ -61,10 +61,10 @@ class VideoQuery extends \yii\db\ActiveQuery
 
     public function byViewer($user_id)
     {
-        return $this->alias('v')
-        ->distinct()
-        ->innerJoinWith(['videoViews vv'], false)
-        ->andWhere(['vv.user_id' => $user_id]);
+        return $this
+            ->distinct()
+            ->innerJoin('{{%video_view}} vv', '{{%video}}.video_id = vv.video_id')
+            ->andWhere(['vv.user_id' => $user_id]);
     }
 
 }

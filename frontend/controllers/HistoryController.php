@@ -1,6 +1,9 @@
 <?php
 
+namespace frontend\controllers;
+
 use common\models\Video;
+use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -13,8 +16,10 @@ class HistoryController extends Controller
             'access' => [
                 'class' => AccessControl::class,
                 'rules' => [
-                    'allow' => true,
-                    'roles' => ['@']
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                    ]
                 ]
             ]
         ];
