@@ -28,11 +28,12 @@ use yii\widgets\Pjax;
         <h5> <a href="<?= Url::to(['/channel/view', 'channel_id' => $model->created_by]) ?>"><?= $model->createdBy->username ?> </a></h5>
         <p><?= $model->description ?></p>
     </div>
-    <div class="col-4">
+    <div class="col-4 px-5 pt-5">
         <?= ListView::widget([
             'dataProvider' => $dataProvider,
-            'itemView' => '_video_item',
-            'options' => ['d-flex flex-column align-items-center']
+            'itemView' => '_similar_video',
+            'options' => ['d-flex flex-column align-items-center'],
+            'summary' => false
         ]) ?>
     </div>
 </div>
