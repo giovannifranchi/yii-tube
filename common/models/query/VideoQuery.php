@@ -3,6 +3,7 @@
 namespace common\models\query;
 
 use common\models\Video;
+use common\models\VideoView;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -56,6 +57,14 @@ class VideoQuery extends \yii\db\ActiveQuery
             ['like', 'description', $keyword],
             ['like', 'tags', $keyword]
         ]);
+    }
+
+    public function byViewer($user_id)
+    {
+        return $this->alias('v')
+        ->distinct()
+        ->innerJoinWith(['videoViews vv'], false)
+        ->andWhere(['vv.user_id' => $user_id]);
     }
 
 }

@@ -235,6 +235,4 @@ class Video extends \yii\db\ActiveRecord
         return Like::find()->isLikedBy($video_id, $user_id)->andWhere(['type'=>self::STATUS_DISLIKE])->one();
     }
 
-    
-
 }
