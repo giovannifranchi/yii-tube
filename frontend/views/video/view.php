@@ -2,9 +2,11 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\widgets\ListView;
 use yii\widgets\Pjax;
 
 /** @var common\models\Video $model */
+/** @var yii\data\ActiveDataProvider $dataProvider */
 
 ?>
 
@@ -27,6 +29,10 @@ use yii\widgets\Pjax;
         <p><?= $model->description ?></p>
     </div>
     <div class="col-4">
-        other videos
+        <?= ListView::widget([
+            'dataProvider' => $dataProvider,
+            'itemView' => '_video_item',
+            'options' => ['d-flex flex-column align-items-center']
+        ]) ?>
     </div>
 </div>

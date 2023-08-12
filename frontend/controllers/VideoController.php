@@ -59,11 +59,14 @@ class VideoController extends Controller
     {
         $this->layout = 'auth';
         $model = $this->findModel($video_id);
+        $dataProvider = new ActiveDataProvider([
+            'query' => Video::find()->byKeyword($model->title)->andWhere(['!=' , 'video_id', $model->video_id])
+        ]);
         $user = Yii::$app->user;
         $videoView = new VideoView();
         $videoView->custumSave($user->id, $video_id);
         
-        return $this->render('view', ['model'=> $model]);
+        return $this->render('view', ['model'=> $model, 'dataProvider' => $dataProvider]);
     }
 
     public function actionLike($video_id)

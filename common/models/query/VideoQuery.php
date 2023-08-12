@@ -47,9 +47,15 @@ class VideoQuery extends \yii\db\ActiveQuery
         return $this->orderBy(['created_at' => SORT_DESC]);
     }
 
+
     public function byKeyword($keyword)
     {
-        return $this->andWhere("MATCH(title,description,tags)AGAINST(:keyword)",['keyword' => $keyword]);
+        return $this->andWhere(['or',
+            new \yii\db\Expression("MATCH(title, description, tags) AGAINST(:keyword)", [':keyword' => $keyword]),
+            ['like', 'title', $keyword],
+            ['like', 'description', $keyword],
+            ['like', 'tags', $keyword]
+        ]);
     }
 
 }
