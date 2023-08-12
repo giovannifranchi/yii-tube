@@ -19,6 +19,8 @@ class VideoController extends Controller
     const STATUS_LIKE = 1;
     const STATUS_DISLIKE = 0;
 
+    public $keyword;
+
     public function behaviors()
     {
         return [
