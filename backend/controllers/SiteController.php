@@ -3,6 +3,8 @@
 namespace backend\controllers;
 
 use common\models\LoginForm;
+use common\models\Video;
+use common\models\VideoView;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -62,8 +64,16 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $user = Yii::$app->user;
+
+        $latetsVideo = Video::find()->creator($user->id)->orderBy(['created_at' => SORT_DESC])->limit(1)->one();
         
-        return $this->render('index');
+        $totalViews = VideoView::find()->andWhere(['user_id' => $user->id])->count();
+        
+        return $this->render('index', [
+            'latestVideo' => $latetsVideo,
+            'totalViews' => $totalViews
+        ]);
     }
 
     /**

@@ -1,7 +1,13 @@
 <?php
 
 /** @var yii\web\View $this */
+/** @var common\models\Video $latestVideo */
 
-$this->title = 'My Yii Application';
 ?>
-<h1>index</h1>
+
+
+<?= $latestVideo->title ?>
+
+<?= $totalViews ?>
+
+
