@@ -3,6 +3,8 @@
 namespace backend\controllers;
 
 use common\models\LoginForm;
+use common\models\Subscriber;
+use common\models\User;
 use common\models\Video;
 use common\models\VideoView;
 use Yii;
@@ -69,10 +71,16 @@ class SiteController extends Controller
         $latetsVideo = Video::find()->creator($user->id)->orderBy(['created_at' => SORT_DESC])->limit(1)->one();
         
         $totalViews = VideoView::find()->andWhere(['user_id' => $user->id])->count();
+
+        $totalSubscribers = Subscriber::find()->andWhere(['channel_id' => $user->id])->count();
+
+        $latestSubscribers = Subscriber::find()->andWhere(['channel_id' => $user->id])->all();
         
         return $this->render('index', [
             'latestVideo' => $latetsVideo,
-            'totalViews' => $totalViews
+            'totalViews' => $totalViews,
+            'totalSubscribers' => $totalSubscribers,
+            'latestSubscribers' =>$latestSubscribers
         ]);
     }
 
